@@ -4,6 +4,8 @@ Open the native folder picker from Node.js and get the absolute path of the sele
 
 Browsers never expose absolute paths, so a local-first app has to open the dialog from its own backend. This package does that part.
 
+The story behind it: [Getting the Absolute Path of a Folder in the Browser Isn't That Easy](https://medium.com/@faresgalal09/getting-the-absolute-path-of-a-folder-in-the-browser-isnt-that-easy-63a4d3d2784d).
+
 - No dependencies and no native builds
 - Cancellable with an `AbortSignal`, and closes itself after a timeout
 - Keeps folder names in any language intact
@@ -85,12 +87,14 @@ export class ProjectsController {
   @Post('select-folder')
   async selectFolder(@Res({ passthrough: true }) response: Response) {
     const controller = new AbortController();
-    response.once('close', () => controller.abort());
+
+    response.once('close', () => {
+      if (!response.writableFinished) controller.abort();
+    });
 
     try {
       return await pickFolder({ signal: controller.signal });
     } catch (error) {
-      // The browser is gone, so nobody is waiting for the result.
       if (controller.signal.aborted) return null;
 
       if (error instanceof FolderPickerError) {
