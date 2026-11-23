@@ -1,0 +1,43 @@
+{
+  "name": "native-folder-picker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open the operating system's folder picker from Node.js and get the absolute path.",
+  "homepage": "https://github.com/F-47/native-folder-picker#readme",
+  "bugs": "https://github.com/F-47/native-folder-picker/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F-47/native-folder-picker.git"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "build": "tsc -p .",
+    "dev": "tsc -p . --watch",
+    "typecheck": "tsc -p . --noEmit",
+    "lint": "eslint src",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "example": "pnpm build && node examples/pick.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.20.5",
+    "eslint": "^10.15.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.73.0"
+  }
+}
