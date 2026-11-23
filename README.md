@@ -127,3 +127,7 @@ pnpm typecheck
 pnpm lint
 pnpm format:check
 ```
+
+## License
+
+[MIT](LICENSE)

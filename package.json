@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Open the operating system's folder picker from Node.js and get the absolute path.",
+  "license": "MIT",
   "homepage": "https://github.com/F-47/native-folder-picker#readme",
   "bugs": "https://github.com/F-47/native-folder-picker/issues",
   "repository": {
