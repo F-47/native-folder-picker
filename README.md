@@ -1,6 +1,6 @@
 # native-folder-picker
 
-Open the operating system's folder picker from Node.js and get the absolute path of the selected folder.
+Open the native folder picker from Node.js and get the absolute path of the selected folder. It works on Windows for now.
 
 Browsers never expose absolute paths, so a local-first app has to open the dialog from its own backend. This package does that part.
 
@@ -10,9 +10,15 @@ Browsers never expose absolute paths, so a local-first app has to open the dialo
 - One dialog at a time
 - Errors with a `code` you can check
 
+## Install
+
+```sh
+npm install native-folder-picker
+```
+
 ## Requirements
 
-- Node.js 22 or newer
+- Node.js 22 or newer (the package is ESM only)
 - Windows, in a desktop session
 
 | Platform | Status                      |
@@ -126,6 +132,7 @@ pnpm example       # open a real dialog
 pnpm typecheck
 pnpm lint
 pnpm format:check
+pnpm check         # the three above
 ```
 
 ## License

@@ -1,9 +1,18 @@
 {
   "name": "native-folder-picker",
   "version": "0.1.0",
-  "private": true,
-  "description": "Open the operating system's folder picker from Node.js and get the absolute path.",
+  "description": "Open the native folder picker from Node.js and get the absolute path. Windows for now, with no dependencies.",
+  "keywords": [
+    "folder-picker",
+    "folder-dialog",
+    "directory-picker",
+    "native-dialog",
+    "select-folder",
+    "windows",
+    "local-first"
+  ],
   "license": "MIT",
+  "author": "F-47",
   "homepage": "https://github.com/F-47/native-folder-picker#readme",
   "bugs": "https://github.com/F-47/native-folder-picker/issues",
   "repository": {
@@ -18,20 +27,25 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=22"
   },
   "packageManager": "pnpm@12.11.2",
   "scripts": {
+    "clean": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\"",
     "build": "tsc -p .",
     "dev": "tsc -p . --watch",
     "typecheck": "tsc -p . --noEmit",
     "lint": "eslint src",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "example": "pnpm build && node examples/pick.mjs"
+    "example": "pnpm build && node examples/pick.mjs",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check",
+    "prepack": "pnpm clean && pnpm build",
+    "prepublishOnly": "pnpm check"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -40,5 +54,8 @@
     "prettier": "^3.10.1",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.73.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
