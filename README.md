@@ -1,5 +1,7 @@
 # native-folder-picker
 
+![Illustration of the folder picker, with the code await pickFolder() returning C:Projectsapp](https://raw.githubusercontent.com/F-47/native-folder-picker/main/assets/banner.png)
+
 Open the native folder picker from Node.js and get the absolute path of the selected folder. It works on Windows for now.
 
 Browsers never expose absolute paths, so a local-first app has to open the dialog from its own backend. This package does that part.
